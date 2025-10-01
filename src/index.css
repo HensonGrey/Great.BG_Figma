@@ -1,12 +1,20 @@
-@import "tailwindcss";
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+@font-face{
+  font-family: 'Inter';
+  src: url('./assets/fonts/Inter/Inter-VariableFont_opsz,wght.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
 }
 
-html, body, #root {
-  height: 100%;
-  width: 100%;
+@font-face{
+  font-family: "Nexa";
+  src: url('./assets/fonts/Nexa-Font-Family/Nexa-Font-Family/TTF/Nexa-Bold.ttf') format('truetype');
+  font-weight: 800;
+  font-style: normal;
+}
+
+@import "tailwindcss";
+
+@theme{
+  --font-inter: Inter, "sans-serif";
+  --font-nexa: Nexa, "sans-serif";
 }
