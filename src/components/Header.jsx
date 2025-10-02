@@ -47,7 +47,7 @@ export default function Header() {
 
         {/* Search bar - Hidden on mobile */}
         <div className="hidden md:flex items-center rounded-full h-10 w-48 lg:w-64 lg:mr-14 border border-[#D9D9D9] shrink-0">
-          <Search className="w-6 h-6 ml-3 mr-2 flex-shrink-0 font-extralight" />
+          <Search className="w-6 h-6 ml-3 mr-2 flex-shrink-0 font-extralight cursor-pointer" />
           <input
             type="text"
             placeholder="Търси тук..."
@@ -58,14 +58,14 @@ export default function Header() {
         {/* Cart and profile icons */}
         <div className="flex gap-4 md:gap-7 items-center shrink-0">
           <button className="relative transition-transform duration-200 hover:scale-110">
-            <ShoppingBag className="w-6 h-6 text-gray-800" />
+            <ShoppingBag className="w-6 h-6 text-gray-800 cursor-pointer"/>
             <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs font-bold w-4 h-4 flex items-center justify-center rounded-full">
               1
             </span>
           </button>
 
           <button className="transition-transform duration-200 hover:scale-110">
-            <User className="w-6 h-6 text-gray-800" />
+            <User className="w-6 h-6 text-gray-800 cursor-pointer"/>
           </button>
 
           {/* Mobile menu button */}
