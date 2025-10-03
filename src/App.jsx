@@ -1,9 +1,6 @@
-import { useState } from "react";
 import Card from "./components/Card";
+import ColorPicker from "./components/ColorPicker";
 import {
-  Search,
-  ShoppingBag,
-  User,
   Star,
   MessageSquareMore,
   Minus,
@@ -17,29 +14,22 @@ import {
   Award,
 } from "lucide-react";
 import earringsImage from "./assets/images/Rectangle 662.png";
-import logo from "./assets/images/Isolation_Mode.png";
+
 import alternativeEarringImage1 from "./assets/images/Rectangle 666.png";
 import alternativeEarringImage2 from "./assets/images/Rectangle 667.png";
 import alternativeEarringImage3 from "./assets/images/Rectangle 668.png";
 import alternativeEarringImage4 from "./assets/images/Rectangle 669.png";
 import similarProduct1 from "./assets/images/IMAGE.png";
-import similarProduct2 from "./assets/images/IMAGE(1).png";
-import similarProduct3 from "./assets/images/IMAGE(2).png";
-import similarProduct4 from "./assets/images/IMAGE(3).png";
+import similarProduct2 from "./assets/images/IMAGE1.png";
+import similarProduct3 from "./assets/images/IMAGE2.png";
+import similarProduct4 from "./assets/images/IMAGE3.png";
 import greatBg from "./assets/images/Great.bg.png";
 import vectorArrow from "./assets/images/Vector.png";
+import Header from "./components/Header";
+import SizePicker from "./components/SizePicker";
 
 function App() {
   const sizes = ["S", "M", "L", "XL", "XXL"];
-
-  const navbarListElements = [
-    { text: "Продукти", bold: true },
-    { text: "Блог" },
-    { text: "Специален допир" },
-    { text: "Партньори" },
-    { text: "Корпоративни клиенти" },
-    { text: "Контакти" },
-  ];
 
   const alternativeImages = [
     { src: alternativeEarringImage1 },
@@ -71,191 +61,172 @@ function App() {
     },
   ];
 
-  const [selected, setSelected] = useState(null);
+  const colors = [
+    { bgColor: "#ECDECC" },
+    { bgColor: "#BBD278" },
+    { bgColor: "#BBC1F8" },
+    { bgColor: "#FFD3F8" },
+    { gradient: "#FFB6B6 50%, #98C185 50%" },
+  ];
 
   return (
-    <div>
-      <header>
-        <nav className="flex">
-          {/* company logo and name */}
-          <div className="flex">
-            <img
-              src={logo}
-              alt="Company Logo"
-              className="h-9 w-6 md:h-[44px] md:w-[34px] transition-transform duration-200 hover:scale-110 cursor-pointer"
-            />
-            <p className="font-bold font-nexa text-xl md:text-[35px] text-[#2E3646] hover:text-blue-500 cursor-pointer transition-colors duration-200 tracking-[-0.1%]">
-              Great.bg
-            </p>
-          </div>
-
-          {/* navbar bulk */}
-          <ul className="flex">
-            {navbarListElements.map((item, index) => (
-              <li key={index} className="">
-                {item.text}
-              </li>
-            ))}
-          </ul>
-
-          <div>
-            <Search />
-            <input type="text" placeholder="Търси тук..." className="" />
-          </div>
-
-          <button className="relative transition-transform duration-200 hover:scale-110">
-            <ShoppingBag className="w-6 h-6 text-gray-800 cursor-pointer" />
-            <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs font-bold w-4 h-4 flex items-center justify-center rounded-full">
-              1
-            </span>
-          </button>
-
-          <button className="transition-transform duration-200 hover:scale-110">
-            <User className="w-6 h-6 text-gray-800 cursor-pointer" />
-          </button>
-        </nav>
-      </header>
+    <div className="bg-[#FFFEF4]">
+      <Header />
 
       <main>
-        <article>
-          {/* selected product, description and price */}
-          <section>
-            <img src={earringsImage} />
-
-            <div className="flex">
-              {alternativeImages.map((item, index) => (
-                <img
-                  key={index}
-                  src={item.src}
-                  alt={`Image ${index + 1} of the earrings from another angle`}
-                />
-              ))}
-            </div>
-          </section>
-
-          {/*Selected item info */}
-          <section>
-            <div>
-              <div className="flex">
-                <h1>Обеци Гъбки</h1>
-                <button>
-                  <Star />
-                  <p>4.8</p>
-                </button>
-                <button>
-                  <MessageSquareMore />
-                  <p>67 Отзива</p>
-                </button>
+        <article className="container mx-auto mt-10 space-y-12">
+          {/* Current product */}
+          <div className="flex flex-col lg:flex-row gap-8 gap-x-20 items-stretch">
+            {/* Left column: images */}
+            <section className="flex-1 max-w-[550px] px-4 sm:px-0 flex flex-col gap-8">
+              <img
+                src={earringsImage}
+                alt="Image of a pair of earrings"
+                className="w-full h-auto object-cover rounded"
+              />
+              <div className="w-full flex justify-center flex-wrap lg:grid lg:grid-cols-4 gap-3">
+                {alternativeImages.map((item, index) => (
+                  <img
+                    key={index}
+                    src={item.src}
+                    alt={`Image ${
+                      index + 1
+                    } of the earrings from another angle`}
+                    className="w-1/3 sm:w-1/4 md:w-1/5 lg:w-full h-auto object-cover aspect-square rounded-sm
+                 hover:scale-105 hover:shadow-lg transition-all duration-200 ease-in-out cursor-pointer"
+                  />
+                ))}
               </div>
-              <div>
-                <h2>
-                  Кат. номер: <b>8418</b>
+            </section>
+
+            {/* Right column: product info */}
+            <section className="flex-1 flex flex-col gap-6 mt-4 pr-[15%]">
+              <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-3 md:gap-0">
+                <h2 className="font-nexa font-extrabold text-[32px] md:text-[40px] leading-[36px] md:leading-[45px] tracking-[-1%] text-black text-center md:text-left">
+                  Обеци Гъбки
                 </h2>
-                <h2>
-                  Производител: <b>Epoque Candle</b>
-                </h2>
-                <p>
+                <div className="flex gap-2 justify-center md:justify-end">
+                  <button className="flex items-center gap-2 rounded-lg bg-[#FFBD59]/25 py-1 px-2.5 hover:scale-105 hover:bg-[#FFBD59]/40 transition">
+                    <Star className="w-4 h-4 text-[#FFBD59]" />
+                    <span className="font-inter font-semibold text-sm text-[#FFBD59]">
+                      4.8
+                    </span>
+                  </button>
+                  <button className="flex items-center gap-2 rounded-lg bg-[#EFE1F0] py-1 px-2.5 hover:scale-105 hover:bg-[#E0D1E6] transition">
+                    <MessageSquareMore className="w-4 h-4 text-[#7B0AD1]" />
+                    <span className="font-inter font-semibold text-sm text-[#7B0AD1]">
+                      67 Отзива
+                    </span>
+                  </button>
+                </div>
+              </div>
+
+              {/* Product details */}
+              <div className="flex flex-col gap-2 text-lg text-[#5F6D7E] items-center md:items-start">
+                <div className="flex gap-2">
+                  <span className="font-bold">Кат. номер:</span>
+                  <span className="font-semibold text-black">8418</span>
+                </div>
+
+                <div className="flex gap-2">
+                  <span className="font-bold">Производител:</span>
+                  <span className="font-semibold text-black">
+                    Epoque Candle
+                  </span>
+                </div>
+
+                <p className="text-black leading-7 max-w-md text-center md:text-left">
                   Висящи ефектни обеци гъбки, боядисани с черна матова боя,
                   закачени за кръгчета от моделин. Красив и артистичен акцент
                   във визията на дамите.
                 </p>
-                <p>
-                  <b>Материал:</b>
-                  месинг, матова черна боя, стоманени щифтове
-                </p>
-                <p>
-                  <b>Размер:</b>
-                  дължина - 7.5 см
-                </p>
-              </div>
-              <div>
-                <b>Изберете цвят</b>
-                <div className="flex space-x-3">
-                  {/* Red */}
-                  <label className="relative cursor-pointer">
-                    <input
-                      type="radio"
-                      name="color"
-                      value="red"
-                      className="peer sr-only"
-                    />
-                    <span
-                      className="block w-8 h-8 rounded-full bg-red-500
-                       peer-checked:ring-2 peer-checked:ring-offset-2 peer-checked:ring-red-600"
-                    ></span>
-                  </label>
+
+                <div className="flex gap-2">
+                  <span className="font-bold">Материал:</span>
+                  <span>месинг, матова черна боя, стоманени щифтове</span>
+                </div>
+
+                <div className="flex gap-2">
+                  <span className="font-bold">Размер:</span>
+                  <span>дължина - 7.5 см</span>
                 </div>
               </div>
-              <div>
-                <b>Изберете размер</b>
-                <div className="flex gap-4">
-                  {sizes.map((size) => (
-                    <button
-                      key={size}
-                      onClick={() => setSelected(size)}
-                      className={`flex items-center gap-2 px-3 py-2 rounded-lg border transition-colors duration-200
-              ${
-                selected === size
-                  ? "bg-blue-500 text-white border-blue-500"
-                  : "bg-white text-gray-800 border-gray-300"
-              }
-                        `}
-                    >
-                      <span
-                        className={`w-4 h-4 rounded-full border transition-colors duration-200
-                ${
-                  selected === size
-                    ? "bg-white"
-                    : "bg-transparent border-gray-400"
-                }
-              `}
-                      ></span>
-                      <span className="font-semibold">{size}</span>
+
+              {/* Color and size */}
+              <div className="flex flex-col gap-6">
+                <hr className="border-black/20" />
+                <ColorPicker colors={colors} />
+                <hr className="border-black/20" />
+                <SizePicker sizes={sizes} />
+              </div>
+
+              {/* Price and quantity */}
+              <div className="flex flex-col items-center lg:items-start gap-4 mt-6">
+                {/* Price + quantity */}
+                <div className="flex items-center gap-3">
+                  <p className="font-inter font-bold text-4xl">30.00лв</p>
+                  <div className="flex items-center gap-3">
+                    <button className="border-2 border-[#7B0AD1] rounded h-7 w-7 flex items-center justify-center hover:bg-[#7B0AD1]/20 transition cursor-pointer">
+                      <Minus color="#7B0AD1" />
                     </button>
-                  ))}
+                    <span className="font-inter font-medium text-xl text-[#4F4F4F]">
+                      2
+                    </span>
+                    <button className="border-2 border-[#7B0AD1] rounded h-7 w-7 flex items-center justify-center hover:bg-[#7B0AD1]/20 transition cursor-pointer">
+                      <Plus color="#7B0AD1" />
+                    </button>
+                  </div>
+                </div>
+
+                {/* Purchase button */}
+                <button
+                  className="w-fit rounded-lg px-4 py-2 bg-[#7B0AD1] text-white font-semibold
+                             mt-4 cursor-pointer transition-all duration-200 ease-in-out 
+                           hover:bg-[#8C14E0] hover:scale-105 hover:shadow-lg"
+                >
+                  Поръчай сега
+                </button>
+              </div>
+
+              {/* Order/Return */}
+              <div className="flex flex-col gap-4 p-4 border border-[#00000033] rounded-lg mt-6 mx-4 lg:mx-0 lg:self-start">
+                <div className="flex gap-2 items-start">
+                  <Truck color="#7B0AD1" />
+                  <div className="flex flex-col">
+                    <span className="font-bold text-[#1D364D]">
+                      Безплатна доставка над 50лв
+                    </span>
+                    <a className="text-sm underline text-[#7B0AD1]">
+                      Подробности за доставка
+                    </a>
+                  </div>
+                </div>
+
+                <hr className="border-black/20 w-full" />
+
+                <div className="flex gap-2 items-start">
+                  <Handbag color="#7B0AD1" />
+                  <div className="flex flex-col">
+                    <span className="font-bold text-[#1D364D]">
+                      Връщане на доставка
+                    </span>
+                    <p className="text-sm text-[#726C6C]">
+                      Безплатна 30-дневна доставка Връщане.
+                      <a className="underline text-[#7B0AD1] ml-1">
+                        Подробности
+                      </a>
+                    </p>
+                  </div>
                 </div>
               </div>
-              <div>
-                <b>30.00лв</b>
-                <button>
-                  <Minus />
-                </button>
-                <p>2</p>
-                <button>
-                  <Plus />
-                </button>
-              </div>
-              <button>
-                <p>Поръчай сега</p>
-              </button>
-            </div>
+            </section>
+          </div>
 
-            {/* Order/Return section */}
-            <div>
-              <div>
-                <Truck />
-                <b>Безплатна доставка над 50лв</b>
-                <a>Подробности за доставка</a>
-              </div>
-
-              <div>
-                <Handbag />
-                <b>Връщане на доставка</b>
-                <p>
-                  Безплатна 30-дневна доставка Връщане.<a>Подробности</a>
-                </p>
-              </div>
-            </div>
-          </section>
-
-          {/* Similar products info */}
-          <section>
-            <div>
-              <h2>
-                <b>Подобни продукти</b>
-              </h2>
-
-              <div>
+          {/* Similar products */}
+          <section className="space-y-4 w-full">
+            <div className="flex justify-between items-center">
+              <h2 className="font-bold">Подобни продукти</h2>
+              <div className="flex gap-2">
                 <button>
                   <ChevronLeft />
                 </button>
@@ -264,9 +235,7 @@ function App() {
                 </button>
               </div>
             </div>
-
-            {/* Similar products */}
-            <div>
+            <div className="flex flex-col items-center justify-content lg:flex-row space-x-28">
               {similarProducts.map((item, index) => (
                 <Card
                   key={index}
@@ -278,45 +247,42 @@ function App() {
             </div>
           </section>
 
-          {/* How we are different*/}
-          <section>
-            {/* Section title thingy */}
-            <div>
-              <div>
-                <h2>С КАКВО СЕ РАЗЛИЧАВА</h2>
-                <button>
-                  <img src={greatBg} alt="GreatBg" />
-                </button>
-              </div>
+          {/* How we are different */}
+          <section className="space-y-6">
+            <div className="flex flex-col items-center">
+              <h2 className="font-bold text-xl">С КАКВО СЕ РАЗЛИЧАВА</h2>
+              <button>
+                <img src={greatBg} alt="GreatBg" />
+              </button>
               <img
                 src={vectorArrow}
-                alt="Downwards/Curved arrow pointing downwards"
+                alt="Downwards/Curved arrow"
+                className="mt-2"
               />
             </div>
 
-            {/* Made up company pluses */}
-            <div className="flex">
-              <div className="flex flex-col">
-                <HeartHandshake />
-                <h2>Подкрепа на Занаятчии</h2>
+            <div className="grid grid-cols-3 gap-8 text-center">
+              <div className="flex flex-col gap-2 items-center">
+                <HeartHandshake className="w-8 h-8" />
+                <h3 className="font-semibold">Подкрепа на Занаятчии</h3>
                 <p>
                   Ние сме ангажирани с подкрепата на занаятчии, които създават
                   своите произведения с любов и изключително майсторство.
                 </p>
               </div>
 
-              <div className="flex flex-col">
-                <Lightbulb />
-                <h2>Уникалност и Креативност:</h2>
+              <div className="flex flex-col gap-2 items-center">
+                <Lightbulb className="w-8 h-8" />
+                <h3 className="font-semibold">Уникалност и Креативност</h3>
                 <p>
-                  Всеки артикул в е ръчно изработен, което гарантира, че няма
-                  два напълно еднакви продукта. Това прави ПОДАРЪКА уникален.
+                  Всеки артикул е ръчно изработен, което гарантира, че няма два
+                  напълно еднакви продукта. Това прави ПОДАРЪКА уникален.
                 </p>
               </div>
 
-              <div className="flex flex-col">
-                <Award />
-                <h2>Високо Качество</h2>
+              <div className="flex flex-col gap-2 items-center">
+                <Award className="w-8 h-8" />
+                <h3 className="font-semibold">Високо Качество</h3>
                 <p>
                   Ние се ангажираме с предлагането на продукти, които не само
                   изглеждат страхотно, но и са изработени с грижа.

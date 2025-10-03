@@ -1,22 +1,22 @@
-import { Search, ShoppingBag, User, Menu } from 'lucide-react';
-import { useState } from 'react';
-import logo from '../assets/images/Isolation_Mode.png';
+import { Search, ShoppingBag, User, Menu } from "lucide-react";
+import { useState } from "react";
+import logo from "../assets/images/Isolation_Mode.png";
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const navItems = [
-    { text: 'Продукти', bold: true },
-    { text: 'Блог' },
-    { text: 'Специален допир' },
-    { text: 'Партньори' },
-    { text: 'Корпоративни клиенти' },
-    { text: 'Контакти' }
+    { text: "Продукти", bold: true },
+    { text: "Блог" },
+    { text: "Специален допир" },
+    { text: "Партньори" },
+    { text: "Корпоративни клиенти" },
+    { text: "Контакти" },
   ];
 
   return (
     <div className="w-full px-4 md:px-6">
-      <header className="flex items-center justify-between lg:justify-center w-full mt-4 md:mt-[25px]">
+      <header className="flex container mx-auto items-center justify-between w-full mt-4 md:mt-[25px]">
         {/* Company name and logo */}
         <div className="flex items-center gap-3 md:gap-5 lg:mr-12 shrink-0">
           <img
@@ -36,7 +36,7 @@ export default function Header() {
               <li
                 key={index}
                 className={`font-inter text-[15px] tracking-[-0.1%] cursor-pointer hover:text-blue-500 transition-colors ${
-                  item.bold ? 'text-[#000000] font-semibold' : ''
+                  item.bold ? "text-[#000000] font-semibold" : ""
                 }`}
               >
                 {item.text}
@@ -58,14 +58,14 @@ export default function Header() {
         {/* Cart and profile icons */}
         <div className="flex gap-4 md:gap-7 items-center shrink-0">
           <button className="relative transition-transform duration-200 hover:scale-110">
-            <ShoppingBag className="w-6 h-6 text-gray-800 cursor-pointer"/>
+            <ShoppingBag className="w-6 h-6 text-gray-800 cursor-pointer" />
             <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs font-bold w-4 h-4 flex items-center justify-center rounded-full">
               1
             </span>
           </button>
 
           <button className="transition-transform duration-200 hover:scale-110">
-            <User className="w-6 h-6 text-gray-800 cursor-pointer"/>
+            <User className="w-6 h-6 text-gray-800 cursor-pointer" />
           </button>
 
           {/* Mobile menu button */}
@@ -86,7 +86,7 @@ export default function Header() {
               <li
                 key={index}
                 className={`text-[15px] tracking-[-0.1%] cursor-pointer hover:text-blue-500 transition-colors px-4 py-2 ${
-                  item.bold ? 'text-[#000000] font-semibold' : ''
+                  item.bold ? "text-[#000000] font-semibold" : ""
                 }`}
               >
                 {item.text}
