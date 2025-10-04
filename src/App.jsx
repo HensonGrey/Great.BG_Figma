@@ -7,14 +7,11 @@ import {
   Plus,
   Truck,
   Handbag,
-  ChevronLeft,
-  ChevronRight,
   HeartHandshake,
   Lightbulb,
   Award,
 } from "lucide-react";
 import earringsImage from "./assets/images/Rectangle 662.png";
-
 import alternativeEarringImage1 from "./assets/images/Rectangle 666.png";
 import alternativeEarringImage2 from "./assets/images/Rectangle 667.png";
 import alternativeEarringImage3 from "./assets/images/Rectangle 668.png";
@@ -23,10 +20,16 @@ import similarProduct1 from "./assets/images/IMAGE.png";
 import similarProduct2 from "./assets/images/IMAGE1.png";
 import similarProduct3 from "./assets/images/IMAGE2.png";
 import similarProduct4 from "./assets/images/IMAGE3.png";
-import greatBg from "./assets/images/Great.bg.png";
-import vectorArrow from "./assets/images/Vector.png";
+import vectorArrow from "./assets/images/arrow.png";
+import vectorCurvedArrow from "./assets/images/curvedArrow.png";
 import Header from "./components/Header";
 import SizePicker from "./components/SizePicker";
+import LeftRightChevrons from "./components/LeftRightChevrons";
+import fakeRev1Img from "./assets/images/fakeRev1.png";
+import fakeRev2Img from "./assets/images/fakeRev2.png";
+import fakeRev3Img from "./assets/images/fakeRev3.png";
+import FakeReview from "./components/FakeReview";
+import { useCarousel } from "./hooks/useCarousel";
 
 function App() {
   const sizes = ["S", "M", "L", "XL", "XXL"];
@@ -41,22 +44,22 @@ function App() {
   const similarProducts = [
     {
       src: similarProduct1,
-      title: "Smart Watch With\nBracelet - Black",
+      title: "Smart Watch With Bracelet - Black",
       price: "25,00 лв.",
     },
     {
       src: similarProduct2,
-      title: `Ароматна свещ\nFlower bouquet`,
+      title: `Ароматна свещ Flower bouquet`,
       price: "25,00 лв.",
     },
     {
       src: similarProduct3,
-      title: `Илюстрация\nЛястовица`,
+      title: `Илюстрация Лястовица`,
       price: "25,00 лв.",
     },
     {
       src: similarProduct4,
-      title: `Книга с илюстрации\nМалкият принц`,
+      title: `Книга с илюстрации Малкият принц`,
       price: "$29.25",
     },
   ];
@@ -69,15 +72,45 @@ function App() {
     { gradient: "#FFB6B6 50%, #98C185 50%" },
   ];
 
+  const fakeReviews = [
+    {
+      title: "Страхотни бижута!",
+      review:
+        "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat aute irure sint amet occaecat cupidatat non proident",
+      posterPicture: fakeRev1Img,
+      posterName: "Sophia Moore",
+      posterRole: "CEO at Webflow Agency",
+    },
+    {
+      title: "Перфектните подаръци!",
+      review:
+        "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat aute irure sint amet occaecat cupidatat non proident",
+      posterPicture: fakeRev2Img,
+      posterName: "Adam Smith",
+      posterRole: "Webflow Developer",
+    },
+    {
+      title: "Супер качество на продуктите",
+      review:
+        "Ut enim ad minim veniam, quis nostrudexercitation ullamco laboris nisi ut aliquip ex ea commodo consequat aute irure sint amet occaecat cupidatat non",
+      posterPicture: fakeRev3Img,
+      posterName: "Mike Warren",
+      posterRole: "Developer at BRIX Templates",
+    },
+  ];
+
+  const productCarousel = useCarousel(similarProducts);
+  const reviewCarousel = useCarousel(fakeReviews);
+
   return (
     <div className="bg-[#FFFEF4]">
       <Header />
 
       <main>
+        {/* Product, details, price, similar products */}
         <article className="container mx-auto mt-10 space-y-12">
           {/* Current product */}
           <div className="flex flex-col lg:flex-row gap-8 gap-x-20 items-stretch">
-            {/* Left column: images */}
             <section className="flex-1 max-w-[550px] px-4 sm:px-0 flex flex-col gap-8">
               <img
                 src={earringsImage}
@@ -162,7 +195,6 @@ function App() {
 
               {/* Price and quantity */}
               <div className="flex flex-col items-center lg:items-start gap-4 mt-6">
-                {/* Price + quantity */}
                 <div className="flex items-center gap-3">
                   <p className="font-inter font-bold text-4xl">30.00лв</p>
                   <div className="flex items-center gap-3">
@@ -224,19 +256,22 @@ function App() {
 
           {/* Similar products */}
           <section className="space-y-4 w-full">
-            <div className="flex justify-between items-center">
-              <h2 className="font-bold">Подобни продукти</h2>
-              <div className="flex gap-2">
-                <button>
-                  <ChevronLeft />
-                </button>
-                <button>
-                  <ChevronRight />
-                </button>
-              </div>
+            <div className="flex flex-col lg:flex-row justify-between items-center">
+              <h2 className="font-nexa font-extrabold text-4xl leading-[65px] tracking-[-1%] text-[#2E3646]">
+                Подобни продукти
+              </h2>
+              <LeftRightChevrons
+                className="hidden lg:flex"
+                onLeftClick={productCarousel.handlePrev}
+                onRightClick={productCarousel.handleNext}
+                leftBg={productCarousel.isAtStart ? "#7B0AD138" : "#7B0AD1"}
+                rightBg={productCarousel.isAtEnd ? "#7B0AD138" : "#7B0AD1"}
+              />
             </div>
-            <div className="flex flex-col items-center justify-content lg:flex-row space-x-28">
-              {similarProducts.map((item, index) => (
+
+            {/* Desktop View */}
+            <div className="hidden lg:flex w-full gap-10 justify-between">
+              {productCarousel.items.map((item, index) => (
                 <Card
                   key={index}
                   image={item.src}
@@ -245,14 +280,63 @@ function App() {
                 />
               ))}
             </div>
+
+            {/* Mobile View */}
+            <div className="lg:hidden px-4 relative">
+              <div className="overflow-hidden">
+                <div
+                  className="flex transition-transform duration-500 ease-out"
+                  style={{
+                    transform: `translateX(-${
+                      productCarousel.currentIndex * 100
+                    }%)`,
+                  }}
+                >
+                  {productCarousel.items.map((item, index) => (
+                    <div key={index} className="w-full flex-shrink-0 px-2">
+                      <Card
+                        image={item.src}
+                        title={item.title}
+                        price={item.price}
+                      />
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Dot indicators */}
+              <div className="flex justify-center items-center gap-2 mt-6">
+                {productCarousel.items.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => productCarousel.goToIndex(index)}
+                    className={`rounded-full transition-all duration-300 ${
+                      index === productCarousel.currentIndex
+                        ? "bg-[#7B0AD1] w-8 h-2"
+                        : "bg-gray-300 w-2 h-2 hover:bg-gray-400"
+                    }`}
+                  />
+                ))}
+              </div>
+
+              {/* Navigation */}
+              <div className="flex justify-center items-center mt-4">
+                <LeftRightChevrons
+                  onLeftClick={productCarousel.handlePrev}
+                  onRightClick={productCarousel.handleNext}
+                  leftBg={productCarousel.isAtStart ? "#7B0AD138" : "#7B0AD1"}
+                  rightBg={productCarousel.isAtEnd ? "#7B0AD138" : "#7B0AD1"}
+                />
+              </div>
+            </div>
           </section>
 
           {/* How we are different */}
-          <section className="space-y-6">
+          <section className="space-y-6 mt-[5%]">
             <div className="flex flex-col items-center">
               <h2 className="font-bold text-xl">С КАКВО СЕ РАЗЛИЧАВА</h2>
               <button>
-                <img src={greatBg} alt="GreatBg" />
+                <p>Great.bg</p>
               </button>
               <img
                 src={vectorArrow}
@@ -261,32 +345,121 @@ function App() {
               />
             </div>
 
-            <div className="grid grid-cols-3 gap-8 text-center">
-              <div className="flex flex-col gap-2 items-center">
-                <HeartHandshake className="w-8 h-8" />
-                <h3 className="font-semibold">Подкрепа на Занаятчии</h3>
-                <p>
+            <div className="flex flex-col lg:flex-row gap-10 mb-[5%]">
+              <div className="flex flex-col border-b border-[#00000033] justify-center items-center text-center pb-6 lg:pb-0 lg:items-start lg:text-start lg:border-r lg:border-b-0">
+                <HeartHandshake className="w-14 h-14" color="#7B0AD1" />
+                <h3 className="font-nexa font-extrabold text-[28px] leading-[72px] tracking-[-0.1%]">
+                  Подкрепа на занаятчии
+                </h3>
+                <p className="font-inter font-extralight text-lg leading-[30px] tracking-[-0.1%]">
                   Ние сме ангажирани с подкрепата на занаятчии, които създават
                   своите произведения с любов и изключително майсторство.
                 </p>
               </div>
 
-              <div className="flex flex-col gap-2 items-center">
-                <Lightbulb className="w-8 h-8" />
-                <h3 className="font-semibold">Уникалност и Креативност</h3>
-                <p>
+              <div className="flex flex-col border-b border-[#00000033] justify-center items-center text-center pb-6 lg:pb-0 lg:items-start lg:text-start lg:border-r lg:border-b-0">
+                <Lightbulb className="w-14 h-14" color="#7B0AD1" />
+                <h3 className="font-nexa font-extrabold text-[28px] leading-[72px] tracking-[-0.1%]">
+                  Уникалност и зреативност
+                </h3>
+                <p className="font-inter font-extralight text-lg leading-[30px] tracking-[-0.1%]">
                   Всеки артикул е ръчно изработен, което гарантира, че няма два
-                  напълно еднакви продукта. Това прави ПОДАРЪКА уникален.
+                  напълно еднакви продукта. Това прави подаръка уникален.
                 </p>
               </div>
 
-              <div className="flex flex-col gap-2 items-center">
-                <Award className="w-8 h-8" />
-                <h3 className="font-semibold">Високо Качество</h3>
-                <p>
+              <div className="flex flex-col justify-center items-center text-center lg:items-start lg:text-start">
+                <Award className="w-14 h-14" color="#7B0AD1" />
+                <h3 className="font-nexa font-extrabold text-[28px] leading-[72px] tracking-[-0.1%]">
+                  Високо качество
+                </h3>
+                <p className="font-inter font-extralight text-lg leading-[30px] tracking-[-0.1%]">
                   Ние се ангажираме с предлагането на продукти, които не само
                   изглеждат страхотно, но и са изработени с грижа.
                 </p>
+              </div>
+            </div>
+          </section>
+        </article>
+
+        {/* Fake reviews */}
+        <article className="w-full flex flex-col bg-[#C3B2E7] pl-[15%] py-[5%] mt-[15%] gap-12">
+          {/* Header */}
+          <section className="w-full flex flex-col lg:flex-row justify-between gap-8">
+            <div className="flex flex-col text lg:flex-row w-full lg:w-1/3 text-center lg:text-start">
+              <h2 className="font-nexa font-extrabold text-3xl lg:text-4xl leading-[55px] tracking-[0px]">
+                Не взимай само нашето мнение под внимание
+              </h2>
+              <img
+                src={vectorCurvedArrow}
+                alt="Curved arrow pointing down"
+                className="hidden lg:block"
+              />
+            </div>
+            <LeftRightChevrons
+              className="flex h-10 px-[10%] w-full justify-center md:hidden"
+              onLeftClick={reviewCarousel.handlePrev}
+              onRightClick={reviewCarousel.handleNext}
+              leftBg={reviewCarousel.isAtStart ? "#7B0AD138" : "#7B0AD1"}
+              rightBg={reviewCarousel.isAtEnd ? "#7B0AD138" : "#7B0AD1"}
+            />
+          </section>
+
+          {/* Fake reviews flex */}
+          <section className="overflow-hidden">
+            {/* Desktop View */}
+            <div className="hidden md:flex gap-12 w-[calc(100%+50%)]">
+              {reviewCarousel.items.map((item, index) => (
+                <div key={index} className="flex-shrink-0 w-[25%]">
+                  <FakeReview
+                    title={item.title}
+                    review={item.review}
+                    posterPicture={item.posterPicture}
+                    posterName={item.posterName}
+                    posterRole={item.posterRole}
+                  />
+                </div>
+              ))}
+            </div>
+
+            {/* Mobile View */}
+            <div className="md:hidden px-4 relative">
+              <div className="overflow-hidden">
+                <div
+                  className="flex transition-transform duration-500 ease-out"
+                  style={{
+                    transform: `translateX(-${
+                      reviewCarousel.currentIndex * 100
+                    }%)`,
+                  }}
+                >
+                  {reviewCarousel.items.map((item, index) => (
+                    <div key={index} className="w-full flex-shrink-0">
+                      <FakeReview
+                        title={item.title}
+                        review={item.review}
+                        posterPicture={item.posterPicture}
+                        posterName={item.posterName}
+                        posterRole={item.posterRole}
+                      />
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Dot indicators */}
+              <div className="flex justify-center items-center gap-2 mt-6">
+                {reviewCarousel.items.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => reviewCarousel.goToIndex(index)}
+                    className={`rounded-full transition-all duration-300 ${
+                      index === reviewCarousel.currentIndex
+                        ? "bg-[#7B0AD1] w-8 h-2"
+                        : "bg-white/50 w-2 h-2 hover:bg-white/70"
+                    }`}
+                  />
+                ))}
               </div>
             </div>
           </section>

@@ -1,20 +1,25 @@
-@font-face{
-  font-family: 'Inter';
-  src: url('./assets/fonts/Inter/Inter-VariableFont_opsz,wght.ttf') format('truetype');
-  font-weight: 400;
-  font-style: normal;
+@font-face {
+  font-family: "Inter";
+  src: url("./assets/fonts/Inter/Inter-VariableFont_opsz,wght.ttf")
+    format("truetype");
 }
 
-@font-face{
+@font-face {
   font-family: "Nexa";
-  src: url('./assets/fonts/Nexa-Font-Family/Nexa-Font-Family/TTF/Nexa-Bold.ttf') format('truetype');
-  font-weight: 800;
-  font-style: normal;
+  src: url("./assets/fonts/Nexa-Font-Family/Nexa-Font-Family/TTF/Nexa-Regular.ttf")
+    format("truetype");
+}
+
+@font-face {
+  font-family: "Jost";
+  src: url("./assets/fonts/Jost/Jost-Italic-VariableFont_wght.ttf")
+    format("truetype");
 }
 
 @import "tailwindcss";
 
-@theme{
+@theme {
   --font-inter: Inter, "sans-serif";
   --font-nexa: Nexa, "sans-serif";
+  --font-jost: Jost, "sans-serif";
 }
