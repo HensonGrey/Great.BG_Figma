@@ -315,8 +315,8 @@ function App() {
         {/* Fake reviews */}
         <article className="w-full flex flex-col bg-[#C3B2E7] pl-[15%] py-[5%] mt-[15%] gap-12">
           {/* Header */}
-          <section className="w-full flex flex-col lg:flex-row justify-between gap-8">
-            <div className="flex flex-col text lg:flex-row w-full lg:w-1/3 text-center lg:text-start">
+          <section className="w-full flex flex-col lg:flex-row justify-center items-center gap-8">
+            <div className="flex flex-col lg:flex-row w-full lg:w-1/2 text-center lg:text-start">
               <h2 className="font-nexa font-extrabold text-3xl lg:text-4xl leading-[55px] tracking-[0px]">
                 Не взимай само нашето мнение под внимание
               </h2>
@@ -327,7 +327,7 @@ function App() {
               />
             </div>
             <LeftRightChevrons
-              className="flex h-10 px-[10%] w-full justify-center md:hidden"
+              className="flex h-10 w-full justify-center"
               onLeftClick={reviewCarousel.handlePrev}
               onRightClick={reviewCarousel.handleNext}
               leftBg={reviewCarousel.isAtStart ? "#7B0AD138" : "#7B0AD1"}
