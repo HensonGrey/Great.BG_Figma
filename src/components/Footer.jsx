@@ -44,34 +44,37 @@ const Footer = () => {
       </div>
 
       {/* heart shaped links across the website */}
+      {/* yea everything should be a link */}
       <div className="col-span-1 sm:col-span-2 w-full flex flex-col sm:flex-row gap-8 sm:gap-16 justify-center text-center sm:text-left">
         <div className="flex flex-col gap-4 sm:gap-6">
           <strong className="font-inter font-extrabold text-xl sm:text-2xl leading-[30px] text-[#2E3646]">
             Продукти
           </strong>
-          <p className="font-inter text-base sm:text-xl text-[#5F6D7E]">
+          <p className="font-inter text-base sm:text-xl text-[#5F6D7E] cursor-pointer">
             Картички
           </p>
-          <p className="font-inter text-base sm:text-xl text-[#5F6D7E]">Чаши</p>
-          <p className="font-inter text-base sm:text-xl text-[#5F6D7E]">
+          <p className="font-inter text-base sm:text-xl text-[#5F6D7E] cursor-pointer">
+            Чаши
+          </p>
+          <p className="font-inter text-base sm:text-xl text-[#5F6D7E] cursor-pointer">
             Картини
           </p>
-          <p className="font-inter text-base sm:text-xl text-[#5F6D7E]">
+          <p className="font-inter text-base sm:text-xl text-[#5F6D7E] cursor-pointer">
             Играчки
           </p>
         </div>
 
         <div className="flex flex-col gap-4 sm:gap-6">
-          <p className="font-inter text-base sm:text-xl text-[#5F6D7E]">
+          <p className="font-inter text-base sm:text-xl text-[#5F6D7E] cursor-pointer">
             Бижута
           </p>
-          <p className="font-inter text-base sm:text-xl text-[#5F6D7E]">
+          <p className="font-inter text-base sm:text-xl text-[#5F6D7E] cursor-pointer">
             Текстили
           </p>
-          <p className="font-inter text-base sm:text-xl text-[#5F6D7E]">
+          <p className="font-inter text-base sm:text-xl text-[#5F6D7E] cursor-pointer">
             Декорации
           </p>
-          <p className="font-inter text-base sm:text-xl text-[#5F6D7E]">
+          <p className="font-inter text-base sm:text-xl text-[#5F6D7E] cursor-pointer">
             Други
           </p>
         </div>
@@ -80,16 +83,16 @@ const Footer = () => {
           <strong className="font-inter font-extrabold text-xl sm:text-2xl leading-[30px] text-[#2E3646]">
             Полезни линкове
           </strong>
-          <p className="font-inter text-base sm:text-xl text-[#5F6D7E]">
+          <p className="font-inter text-base sm:text-xl text-[#5F6D7E] cursor-pointer">
             Доставка
           </p>
-          <p className="font-inter text-base sm:text-xl text-[#5F6D7E]">
+          <p className="font-inter text-base sm:text-xl text-[#5F6D7E] cursor-pointer">
             Моят профил
           </p>
-          <p className="font-inter text-base sm:text-xl text-[#5F6D7E]">
+          <p className="font-inter text-base sm:text-xl text-[#5F6D7E] cursor-pointer">
             Срокове
           </p>
-          <p className="font-inter text-base sm:text-xl text-[#5F6D7E]">
+          <p className="font-inter text-base sm:text-xl text-[#5F6D7E] cursor-pointer">
             Общи условия
           </p>
         </div>
