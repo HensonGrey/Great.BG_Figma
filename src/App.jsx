@@ -12,6 +12,14 @@ import {
   Award,
 } from "lucide-react";
 import earringsImage from "./assets/images/Rectangle 662.png";
+import collage1 from "./assets/images/collage1.png";
+import collage2 from "./assets/images/collage2.png";
+import collage3 from "./assets/images/collage3.png";
+import collage4 from "./assets/images/collage4.png";
+import collage5 from "./assets/images/collage5.png";
+import collage6 from "./assets/images/collage6.png";
+import collage7 from "./assets/images/collage7.png";
+import collage8 from "./assets/images/collage8.png";
 import vectorArrow from "./assets/images/arrow.png";
 import vectorCurvedArrow from "./assets/images/curvedArrow.png";
 import Header from "./components/Header";
@@ -19,6 +27,12 @@ import SizePicker from "./components/SizePicker";
 import LeftRightChevrons from "./components/LeftRightChevrons";
 import FakeReview from "./components/FakeReview";
 import { useCarousel } from "./hooks/useCarousel";
+import lesno from "./assets/images/lesno.png";
+import greatbg from "./assets/images/greatbg.png";
+import unikalen from "./assets/images/unikalen.png";
+import envelope from "./assets/images/envelope.png";
+import heart from "./assets/images/heart.png";
+import candle from "./assets/images/candle.png";
 
 import {
   similarProducts,
@@ -27,6 +41,7 @@ import {
   colors,
   sizes,
 } from "./data/mainPage";
+import Footer from "./components/Footer";
 
 function App() {
   const productCarousel = useCarousel(similarProducts);
@@ -265,9 +280,7 @@ function App() {
           <section className="space-y-6 mt-[5%]">
             <div className="flex flex-col items-center">
               <h2 className="font-bold text-xl">С КАКВО СЕ РАЗЛИЧАВА</h2>
-              <button>
-                <p>Great.bg</p>
-              </button>
+              <img src={greatbg} alt="An image spelling great.bg" />
               <img
                 src={vectorArrow}
                 alt="Downwards/Curved arrow"
@@ -313,7 +326,7 @@ function App() {
         </article>
 
         {/* Fake reviews */}
-        <article className="w-full flex flex-col bg-[#C3B2E7] pl-[15%] py-[5%] mt-[15%] gap-12">
+        <article className="w-full flex flex-col bg-[#C3B2E7] pl-[15%] py-[5%] mt-[5%] gap-12">
           {/* Header */}
           <section className="w-full flex flex-col lg:flex-row justify-center items-center gap-8">
             <div className="flex flex-col lg:flex-row w-full lg:w-1/2 text-center lg:text-start">
@@ -394,7 +407,137 @@ function App() {
             </div>
           </section>
         </article>
+
+        {/* I dont even know what this is supposed to be */}
+        {/* And I really have no idea how to do this shit */}
+        <article className="w-full flex bg-[#0087FB42] h-[850px] relative">
+          <img
+            src={collage1}
+            alt="collage image 1"
+            className="absolute left-[20%] top-[10%]  hidden lg:block h-[22vh] w-[12vw]"
+          />
+          <img
+            src={collage2}
+            alt="collage image 2"
+            className="absolute left-[1.5%] top-[30%] hidden lg:block w-[8vw] h-[16vh]"
+          />
+          <img
+            src={collage3}
+            alt="collage image 3"
+            className="absolute left-[10%] bottom-[9%] hidden lg:block h-[22vh] w-[12vw]"
+          />
+          <img
+            src={collage4}
+            alt="collage image 4"
+            className="absolute bottom-[5%] left-[40%] hidden lg:block w-[8vw] h-[16vh]"
+          />
+          <img
+            src={collage5}
+            alt="collage image 5"
+            className="absolute top-[7%] right-[30%] hidden lg:block w-[8vw] h-[16vh]"
+          />
+          <img
+            src={collage6}
+            alt="collage image 6"
+            className="absolute right-[15%] bottom-[67%] lg:top-[30%] lg:right-[15%] lg:block lg:h-[22vh] lg:w-[12vw]"
+          />
+          <img
+            src={collage7}
+            alt="collage image 7"
+            className="absolute  lg:right-[25%] lg:bottom-[10%] lg:block lg:w-[8vw] lg:h-[16vh] hidden "
+          />
+          <img
+            src={collage8}
+            alt="collage image 8"
+            className="absolute right-[15%] bottom-[1%] lg:right-[2.5%] lg:bottom-[7%] lg:h-[22vh] lg:w-[12vw]"
+          />
+
+          <div className="flex flex-col w-full justify-center items-center gap-4">
+            <div>
+              <h2 className="font-nexa font-extrabold text-2xl lg:text-5xl text-center leading-[65px] tracking-[-1%]">
+                Подаряването става
+              </h2>
+              <div className="flex gap-4 justify-center">
+                <h3 className="font-nexa font-extrabold text-2xl lg:text-5xl text-center leading-[65px] tracking-[-1%]">
+                  толкова
+                </h3>
+                <img
+                  src={lesno}
+                  alt="An image spelling the word easy in bulgarian"
+                  className=" w-1/2 h-1/2 lg:w-full lg:h-auto"
+                />
+              </div>
+            </div>
+            <p className="font-inter text-lg leading-[30px] tracking-[-1%] text-center w-full p-2 lg:w-1/3 text-[#5F6D7E]">
+              Изпращайте перфектния подарък всеки път. Нашият магазин за
+              подаръци е пълен със стотици водещи марки и е внимателно подбран
+              за всякакви поводи.
+            </p>
+          </div>
+        </article>
+
+        {/* Another useless article */}
+        <article className="h-[700px] p-[3%] w-full relative">
+          <div className="w-full h-full relative">
+            <img
+              src={envelope}
+              alt="Envelope"
+              className="absolute top-0 left-0 hidden lg:block"
+            />
+            <img
+              src={heart}
+              alt="Heart"
+              className="absolute top-0 right-0 hidden lg:block"
+            />
+            <img
+              src={heart}
+              alt="Heart"
+              className="absolute left-[20%] bottom-[-5%] rotate-[10deg] hidden lg:block"
+            />
+            <img
+              src={candle}
+              alt="Candle"
+              className="absolute right-[20%] bottom-[-5%] hidden lg:block"
+            />
+          </div>
+
+          <div className="absolute inset-0 flex items-center justify-center px-4 sm:px-6">
+            <div className="flex flex-col items-center gap-8 text-center max-w-full">
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-center gap-4 lg:flex-nowrap w-full max-w-full">
+                <h2 className="font-nexa font-extrabold text-2xl lg:text-5xl leading-[40px] sm:leading-[50px] lg:leading-[60px] tracking-[-1%] whitespace-nowrap">
+                  Открийте своя
+                </h2>
+                <img
+                  src={unikalen}
+                  alt="Unique in Bulgarian"
+                  className="w-36 h-16 sm:w-20 sm:h-20 lg:h-24 mx-auto sm:mx-2 flex-shrink-0 lg:w-1/3"
+                />
+                <h2 className="font-nexa font-extrabold text-2xl lg:text-5xl leading-[40px] sm:leading-[50px] lg:leading-[60px] tracking-[-1%] whitespace-nowrap">
+                  подарък
+                </h2>
+              </div>
+
+              <h2 className="font-nexa font-extrabold text-xl sm:text-2xl lg:text-5xl leading-[28px] sm:leading-[50px] lg:leading-[60px] tracking-[-1%]">
+                днес и станете част от нашата мисия
+              </h2>
+
+              <p className="font-inter text-base sm:text-lg leading-[24px] sm:leading-[30px] tracking-[-0.1%] text-[#5F6D7E] max-w-md sm:max-w-xl lg:max-w-2xl">
+                We’ve been told it is possible to revolutionize the payment
+                industry. We have not reinvented the wheel, we decided to build
+                upon it - successfully.
+              </p>
+
+              <button className="rounded-lg px-6 py-3 sm:py-4 bg-[#7B0AD1] font-semibold mt-4 cursor-pointer transition-all duration-200 ease-in-out hover:bg-[#8C14E0] hover:scale-105 hover:shadow-lg">
+                <p className="font-inter font-semibold text-base sm:text-lg leading-[20px] sm:leading-[22px] tracking-[-0.1%] text-[#F8F9FB]">
+                  Разгледай продуктите
+                </p>
+              </button>
+            </div>
+          </div>
+        </article>
       </main>
+
+      <Footer />
     </div>
   );
 }
