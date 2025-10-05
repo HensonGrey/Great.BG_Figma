@@ -278,13 +278,26 @@ function App() {
 
           {/* How we are different */}
           <section className="space-y-6 mt-[5%]">
-            <div className="flex flex-col items-center">
-              <h2 className="font-bold text-xl">С КАКВО СЕ РАЗЛИЧАВА</h2>
-              <img src={greatbg} alt="An image spelling great.bg" />
+            <div className="flex justify-center items-center gap-2">
+              <div className="flex flex-col items-center lg:gap-2">
+                <h2 className="font-nexa font-extrabold text-2xl lg:text-5xl leading-[71px] tracking-[-0.1%] ">
+                  С какво се различава
+                </h2>
+                <div className="flex gap-2 items-center">
+                  <img
+                    src={greatbg}
+                    alt="An image spelling great.bg"
+                    className="w-24 h-12 lg:w-auto lg:h-auto"
+                  />
+                  <span className="font-nexa font-extrabold text-3xl lg:text-5xl leading-[71px] tracking-[-0.1%]">
+                    ?
+                  </span>
+                </div>
+              </div>
               <img
                 src={vectorArrow}
                 alt="Downwards/Curved arrow"
-                className="mt-2"
+                className="mt-2 h-24 lg:h-auto"
               />
             </div>
 
